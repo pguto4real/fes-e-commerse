@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/9beae3220a.js" crossorigin="anonymous"></script>
+    <script src="index.js" defer></script>
+  <script src="books.js" defer></script>
+</head>
+
+<body id="books__body">
+  <section>
+    <nav class="nav">
+     
+    </nav>
+  </section>
+
+  <main id="books__main">
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="books__header">
+            <h2 class="section__title books__header--title">
+              All <span class="purple">Books</span>
+            </h2>
+            <select id="filter" onchange="filterBooks(event)">
+              <option value="" disabled selected>Sort</option>
+              <option value="LOW_TO_HIGH">Price, Low to High</option>
+              <option value="HIGH_TO_LOW">Price, High to Low</option>
+              <option value="RATING">Rating</option>
+            </select>
+          </div>
+          <div class="books">
+            <i class="fas fa-spinner books__loading--spinner"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="row row__column">
+        <a href="#">
+          <figure class="footer__logo">
+            <img src="assets/Library.svg" class="footer__logo--img" alt="">
+          </figure>
+        </a>
+        <div class="footer__list">
+          <a href="#" class="footer__link">Home</a>
+          <a class="footer__link no-cursor">About</a>
+          <a href="#features" class="footer__link">Books</a>
+          <a class="footer__link no-cursor">Contact</a>
+        </div>
+        <div class="footer__copyright">Copyright &copy; 2021 Library</div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
