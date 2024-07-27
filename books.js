@@ -37,7 +37,7 @@ function renderBooks(filter) {
                                     </div>
                                     <div class="book__price">
                                        
-${priceHTML(element.id,element.salePrice,element.originalPrice.toFixed(2))}
+${priceHTML(element.salePrice,element.originalPrice.toFixed(2))}
                                     </div>
                                     
                                 </div>
@@ -66,7 +66,7 @@ function getStar(number) {
   }
   return star;
 }
-function priceHTML(id,salePrice,originalPrice) {
+function priceHTML(salePrice,originalPrice) {
   
   if (!!salePrice) {
     return `<span class="book__price--normal">$${salePrice.toFixed(2)}</span> $${originalPrice}`
