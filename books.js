@@ -66,7 +66,14 @@ function getStar(number) {
   }
   return star;
 }
-
+function priceHTML(id,salePrice,originalPrice) {
+  
+  if (!!salePrice) {
+    return `<span class="book__price--normal">$${salePrice.toFixed(2)}</span> $${originalPrice}`
+  }
+ return `$${originalPrice}`
+  // return star;
+}
 // getStar(4.5)
 // FAKE DATA
 function getBooks() {
