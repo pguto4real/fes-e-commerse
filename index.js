@@ -5,18 +5,18 @@ function closeMenu(){
     document.body.classList.remove("menu--open")
 }
 const loadSnippet = (targetDivClass)=>{
-    console.log('jdjdj')
+
     const targetEl = document.querySelector(".nav")
    
     fetch (`${targetDivClass}.html`)
     .then(res=>{
-        console.log('i got here')
+        
         if(res.ok){
             return res.text();
         }
     })
     .then(htmlSnippet=>{
-        console.log('i got here2')
+     
         targetEl.innerHTML = htmlSnippet
     })
 }
