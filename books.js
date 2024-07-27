@@ -1,13 +1,23 @@
-function renderBooks(){
+function renderBooks(filter) {
   const booksWrapper = document.querySelector('.books');
-  // console.log(booksWrapper);
-
-
+  console.log(filter);
   const books = getBooks();
- 
-const bookData = books.map((element)=>{
- 
-return  `<div class="book">
+  if (filter === 'LOW_TO_HIGH') {
+      books.sort((a,b)=>  a.originalPrice- b.originalPrice);
+  console.log(books)
+    } else if (filter === 'HIGH_TO_LOW') {
+      books.sort((a,b)=>  b.originalPrice- a.originalPrice);
+      console.log(books)
+  }
+  else if (filter === 'RATING') {
+    books.sort((a,b)=>  b.rating- a.rating);
+    console.log(books)
+  }
+
+
+  const bookData = books.map((element) => {
+// console.log(element)
+    return `<div class="book">
                             <div class="book__wrapper">
 
                                 <img class="book__img" src="${element.url}" alt="">
@@ -26,8 +36,8 @@ return  `<div class="book">
                                    
                                     </div>
                                     <div class="book__price">
-                                       <span class="book__price--normal">  ${element.salePrice == null ? '' :'$'+element.salePrice}</span>   $${element.originalPrice}
-
+                                       
+${priceHTML(element.id,element.salePrice,element.originalPrice.toFixed(2))}
                                     </div>
                                     
                                 </div>
@@ -35,22 +45,28 @@ return  `<div class="book">
                             </div>
 
                         </div>`
-  }) 
+  })
   // console.log(bookData.);
   booksWrapper.innerHTML = bookData.join('')
 }
+function filterBooks(event) {
+
+  renderBooks(event.target.value)
+
+}
 renderBooks();
-function getStar(number){
+function getStar(number) {
   let star = "";
-  for(let i = 1;i<number;i++){
-  star += `<i class="fas fa-star" aria-hidden="true"></i>`
+  for (let i = 1; i <= Math.floor(number); i++) {
+    star += `<i class="fas fa-star" aria-hidden="true"></i>\n`
 
   }
-  if(!Number.isInteger(number)){
-star += `<i class="fas fa-star-half-alt" aria-hidden="true"></i>`
+  if (!Number.isInteger(number)) {
+    star += `<i class="fas fa-star-half-alt" aria-hidden="true"></i>\n`
   }
- return star;
+  return star;
 }
+
 // getStar(4.5)
 // FAKE DATA
 function getBooks() {
@@ -58,11 +74,11 @@ function getBooks() {
     {
       id: 1,
       title: "Crack the Coding Interview",
-                url: "assets/crack the coding interview.png",
+      url: "assets/crack the coding interview.png",
       originalPrice: 49.95,
       salePrice: 14.95,
       rating: 4.5,
-      author:"Gayle Laakmann"
+      author: "Gayle Laakmann"
     },
     {
       id: 2,
@@ -71,7 +87,7 @@ function getBooks() {
       originalPrice: 39,
       salePrice: null,
       rating: 5,
-      author:"James Clear"
+      author: "James Clear"
     },
     {
       id: 3,
@@ -80,7 +96,7 @@ function getBooks() {
       originalPrice: 29,
       salePrice: 12,
       rating: 5,
-      author:"Cal Newport"
+      author: "Cal Newport"
     },
     {
       id: 4,
@@ -89,7 +105,7 @@ function getBooks() {
       originalPrice: 44,
       salePrice: 19,
       rating: 4.5,
-      author:"Grant Cardone"
+      author: "Grant Cardone"
     },
     {
       id: 5,
@@ -98,7 +114,7 @@ function getBooks() {
       originalPrice: 32,
       salePrice: 17,
       rating: 4,
-      author:"Grant Cardone"
+      author: "Grant Cardone"
     },
     {
       id: 6,
@@ -107,7 +123,7 @@ function getBooks() {
       originalPrice: 70,
       salePrice: 12.5,
       rating: 5,
-      author:"Robert Kiyosaki"
+      author: "Robert Kiyosaki"
     },
     {
       id: 7,
@@ -116,7 +132,7 @@ function getBooks() {
       originalPrice: 11,
       salePrice: 10,
       rating: 4,
-      author:"Robert Kiyosaki"
+      author: "Robert Kiyosaki"
     },
     {
       id: 8,
@@ -125,7 +141,7 @@ function getBooks() {
       originalPrice: 38,
       salePrice: 17.95,
       rating: 4.5,
-      author:"Robert Greene"
+      author: "Robert Greene"
     },
     {
       id: 9,
@@ -134,7 +150,7 @@ function getBooks() {
       originalPrice: 35,
       salePrice: null,
       rating: 4,
-      author:"Mel Robbins"
+      author: "Mel Robbins"
     },
     {
       id: 10,
@@ -143,7 +159,7 @@ function getBooks() {
       originalPrice: 40,
       salePrice: null,
       rating: 4,
-      author:"Patrick Bet-David"
+      author: "Patrick Bet-David"
     },
     {
       id: 11,
@@ -152,7 +168,7 @@ function getBooks() {
       originalPrice: 30,
       salePrice: null,
       rating: 4.5,
-      author:"Robert Greene"
+      author: "Robert Greene"
     },
   ];
 }

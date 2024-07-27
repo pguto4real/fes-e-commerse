@@ -465,9 +465,9 @@ header {
     color: #fabf2a;
     margin-bottom: 8px;
 }
-.book__ratings i{
+/* .book__ratings i{
     margin-left: 2px;
-}
+} */
 /* Recents */
 .recents {
     display: flex;
